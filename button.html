@@ -4982,29 +4982,29 @@ dough hydration calculator</a>
       <h3>Enter the information:</h3>
       <div class="form-group">
         <label for="starter" class="control-label">1: Starter Amount *</label>
-        <input type="number" class="form-control"  type="number" id="starter" name="starter" onchange="clearResult();" placeholder="Amount of 100% hydrated starter" aria-describedby="helpBlock">
+        <input type="number" class="form-control"  type="number" id="starter" name="starter" onkeypress="clearResult(event);" placeholder="Amount of 100% hydrated starter" aria-describedby="helpBlock">
       </div>
       <div class="form-group">
         <label for="hydration" class="control-label">2: Hydration Level</label>
         <div class="input-group">
-          <input type="number" min="0" max="100" step="1" class="form-control" id="hydration" name="hydration" onkeyup="clearResult();" placeholder="Desired hydration level">
+          <input type="number" min="0" max="100" step="1" class="form-control" id="hydration" name="hydration" onkeydown="clearResult(event);" placeholder="Desired hydration level">
           <div class="input-group-addon">%</div>
         </div>
       </div>
       <div class="form-group">
         <label for="total">3: Total amount of dough</label>
-        <input type="number" class="form-control" id="total" name="total" onkeyup="clearResult();" placeholder="Total amount of dough">
+        <input type="number" class="form-control" id="total" name="total" onkeydown="clearResult(event);" placeholder="Total amount of dough">
       </div>
       <button type="button" class="btn btn-success" onclick="calculate()">Compute</button>
 
       <h3>Amount of water and flour to be added:</h3>
       <div class="form-group">
         <label for="water">Water</label>
-        <input type="text" class="form-control has-success" id="water" name="water" onkeyup="clearResult();">
+        <input type="text" class="form-control has-success" id="water" name="water" onkeydown="clearResult(event);">
       </div>
       <div class="form-group">
         <label for="flour">Flour</label>
-        <input type="text" class="form-control" id="flour" name="flour" onkeyup="clearResult();">
+        <input type="text" class="form-control" id="flour" name="flour" onkeydown="clearResult(event);">
       </div>
       <div id="helpBlock" class="help-block">*Usually, my initial starter contains equal masses of water (w) and flour (f).
       This means that its hydration level (HL) is HL = w/f = 1 (or 100%)</div>
@@ -5071,6 +5071,19 @@ function calculate() {
  //  alert(w);
 // alert(f);
     // Check that the result is a finite number. If so, display the results
+    if(!starter){
+      form.starter.focus();
+      return;
+    }
+    if(!hydration) {
+      form.hydration.focus();
+      return;
+    }
+    if(!total){
+      form.total.focus();
+      return;
+    }
+
     if (starter && hydration && total && f && w && !isNaN(w) &&
         (w != Number.POSITIVE_INFINITY) &&
         (w != Number.NEGATIVE_INFINITY)) {
@@ -5089,12 +5102,15 @@ function calculate() {
         $(form.flour).parent().removeClass("has-success");
     }
 }
-function clearResult(){
+function clearResult(event){
   var form = document.dough;
   form.water.value = "";
   form.flour.value = "";
   $(form.water).parent().removeClass("has-success");
   $(form.flour).parent().removeClass("has-success");
+  if(event.code==="Enter"){
+    calculate();
+  }
 }
 // This simple method rounds a number to two decimal places.
 function round(x) {
