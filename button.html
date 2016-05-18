@@ -4961,7 +4961,14 @@ dough hydration calculator</a>
       padding-right: 17%;
     }
     form#dough > h3{
-      color: orange;
+      color: rgb(252, 188, 6);
+      /*font-size: 1.4em;*/
+      background: rgba(141, 89, 45, 0.5) none repeat scroll 0% 0%;
+      padding: 2px 4px;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      /*text-decoration: underline;*/
+
     }
     form#dough > h3.result{
       color: green;
@@ -4980,48 +4987,67 @@ dough hydration calculator</a>
       background-color:white;
     }
     form#dough{
-      background-image: url("./bread-holes.jpg"), linear-gradient(to bottom right, rgb(247, 247, 247), rgba(253, 248, 247, 0.58));
+      padding: 10px;
+      box-sizing: border-box;
+      padding-left: 17%;
+      padding-right: 17%;
+    }
+    form#dough > .help-block{
+      display: block;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      color: #FCBC06;
+      background-color: rgba(108, 38, 19, 0.48);
+      border: 1px solid transparent;
+      border-radius: 4px;
+      padding: 2px;
+      font-weight: bold;
+    }
+    .form-wrapper{
+      margin: 4px;
+      background-image: url("./bread-holes.jpg"), linear-gradient(to right bottom, rgba(247, 247, 247, 0.32), rgba(253, 248, 247, 0.15));
       background-blend-mode: overlay;
     }
   </style>
   <div class="article-content entry-content" itemprop="articleBody">
-    <form id="dough" name="dough" >
-      <h3>Enter the information:</h3>
-      <div class="form-group">
-        <label for="starter" class="control-label">1: Starter Amount *</label>
-        <input type="number" class="form-control"  type="number" id="starter" name="starter" onkeypress="clearResult(event);"
-               autocomplete="off" placeholder="Amount of 100% hydrated starter" aria-describedby="helpBlock">
-      </div>
-      <div class="form-group">
-        <label for="hydration" class="control-label">2: Hydration Level</label>
-        <div class="input-group">
-          <input type="number" min="0" max="100" step="1" class="form-control" id="hydration" name="hydration"
-                 autocomplete="off" onkeydown="clearResult(event);" placeholder="Desired hydration level">
-          <div class="input-group-addon">%</div>
+    <div class="form-wrapper">
+      <form id="dough" name="dough" >
+        <h3>Enter the information:</h3>
+        <div class="form-group">
+          <label for="starter" class="control-label">1: Starter Amount *</label>
+          <input type="number" class="form-control"  type="number" id="starter" name="starter" onkeypress="clearResult(event);"
+                 autocomplete="off" placeholder="Amount of 100% hydrated starter" aria-describedby="helpBlock">
         </div>
-      </div>
-      <div class="form-group">
-        <label for="total">3: Total amount of dough</label>
-        <input type="number" class="form-control" id="total" name="total" onkeydown="clearResult(event);" placeholder="Total amount of dough">
-      </div>
-      <div class="form-group">
-        <button type="button" class="btn btn-success"
-                autocomplete="off" onclick="calculate()">Compute</button>
-      </div>
+        <div class="form-group">
+          <label for="hydration" class="control-label">2: Hydration Level</label>
+          <div class="input-group">
+            <input type="number" min="0" max="100" step="1" class="form-control" id="hydration" name="hydration"
+                   autocomplete="off" onkeydown="clearResult(event);" placeholder="Desired hydration level">
+            <div class="input-group-addon">%</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="total">3: Total amount of dough</label>
+          <input type="number" class="form-control" id="total" name="total" onkeydown="clearResult(event);" placeholder="Total amount of dough">
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-success"
+                  autocomplete="off" onclick="calculate()">Compute</button>
+        </div>
 
-      <h3>Amount of water and flour to be added:</h3>
-      <div class="form-group">
-        <label for="water">Water</label>
-        <input type="text" class="form-control has-success" id="water" readonly name="water">
-      </div>
-      <div class="form-group">
-        <label for="flour">Flour</label>
-        <input type="text" class="form-control" id="flour" name="flour" readonly >
-      </div>
-      <div id="helpBlock" class="help-block">*Usually, my initial starter contains equal masses of water (w) and flour (f).
-      This means that its hydration level (HL) is HL = w/f = 1 (or 100%)</div>
-    </form>
-
+        <h3>Amount of water and flour to be added:</h3>
+        <div class="form-group">
+          <label for="water">Water</label>
+          <input type="text" class="form-control has-success" id="water" readonly name="water">
+        </div>
+        <div class="form-group">
+          <label for="flour">Flour</label>
+          <input type="text" class="form-control" id="flour" name="flour" readonly >
+        </div>
+        <div id="helpBlock" class="help-block">*Usually, my initial starter contains equal masses of water (w) and flour (f).
+        This means that its hydration level (HL) is HL = w/f = 1 (or 100%)</div>
+      </form>
+    </div>
     <!--<form name="dough1">-->
 <!--<table><tbody>-->
 <!--<tr><td colspan="3"><b><span style="color: orange;"><span style="font-size: large;">Enter the information </span>:</span></b></td></tr>-->
